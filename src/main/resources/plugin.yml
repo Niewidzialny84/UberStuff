@@ -1,0 +1,6 @@
+name: UberStuff
+version: ${project.version}
+main: github.niewidzialny84.uberstuff.UberStuff
+api-version: 1.13
+authors: [Niewidzialny84]
+description: for other memes stuff
