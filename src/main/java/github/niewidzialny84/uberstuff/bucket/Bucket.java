@@ -24,7 +24,12 @@ public class Bucket {
     }
 
     public boolean isCorrectBucket(ItemStack a) {
-        return a.getItemMeta().getLore().get(0) != null && a.getItemMeta().getLore().get(0).equals(bucket.getItemMeta().getLore().get(0));
+        try {
+            return a.getItemMeta().getLore().get(0) != null && a.getItemMeta().getLore().get(0).equals(bucket.getItemMeta().getLore().get(0));
+        } catch (NullPointerException ex) {
+            return false;
+        }
+
     }
 
     public ItemStack getBucket() {
