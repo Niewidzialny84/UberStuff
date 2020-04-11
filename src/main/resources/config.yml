@@ -1,0 +1,5 @@
+voidfall:
+  #A name to which world you should be teleported after fallig to the void to
+  worldName: world
+  #If Voidout set to true it will delete whole chunk after the teleportation
+  doVoidout: false
