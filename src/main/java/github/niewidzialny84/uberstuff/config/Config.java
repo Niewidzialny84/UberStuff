@@ -33,7 +33,7 @@ public class Config {
 
         if((Boolean) configValue.get("voidfall.enable")) {
             playerFall = new PlayerFall(plugin);
-            plugin.getLogger().info("voidfall enabled");
+            plugin.getLogger().info("VoidFall enabled");
         }
 
     }

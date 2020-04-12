@@ -27,6 +27,7 @@ public class PlayerFall implements Listener {
                 int y = player.getLocation().getBlockY();
 
                 if(player.isOnline() && player.getWorld().getEnvironment().equals(World.Environment.THE_END) && y < -50) {
+
                     String worldName = plugin.getConfig().getString("voidfall.worldName","world");
 
                     Location loc = player.getLocation();
@@ -37,7 +38,7 @@ public class PlayerFall implements Listener {
                     new SoundEffect(player).runTaskLater(plugin,10);
 
                     if(plugin.getConfig().getBoolean("voidfall.doVoidout",false)) {
-                        new VoidOut(plugin, player).runTaskLater(plugin, 15);
+                        new VoidOut(player).runTaskLater(plugin, 15);
                     }
                 }
             }

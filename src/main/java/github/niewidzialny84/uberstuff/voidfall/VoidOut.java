@@ -3,15 +3,12 @@ package github.niewidzialny84.uberstuff.voidfall;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class VoidOut extends BukkitRunnable {
-    Plugin plugin;
     Player player;
 
-    public VoidOut(Plugin plugin, Player player) {
-        this.plugin = plugin;
+    public VoidOut(Player player) {
         this.player = player;
     }
 
