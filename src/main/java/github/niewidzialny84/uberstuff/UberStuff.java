@@ -8,8 +8,12 @@ public final class UberStuff extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        new BucketListener(this);
+        saveDefaultConfig();
+
         new PlayerFall(this);
+
+        System.out.println(this.getConfig().getValues(true));
+
     }
 
     @Override
