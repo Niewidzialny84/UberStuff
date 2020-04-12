@@ -18,6 +18,7 @@ public class Bucket{
     private ItemStack bucket = new ItemStack(Material.BUCKET,1);
     private String description;
     private String name;
+    private int durability;
     private ShapedRecipe recipe;
     private NamespacedKey key;
 
@@ -25,7 +26,7 @@ public class Bucket{
     Bucket(Plugin plugin) {
         name = ChatColor.YELLOW + plugin.getConfig().getString("bucket.name","Duże wiadro");
         description = ChatColor.GRAY + plugin.getConfig().getString("bucket.description", "Pochłania płyny");
-        int durability = plugin.getConfig().getInt("bucket.durability",100);
+        durability = plugin.getConfig().getInt("bucket.durability",100);
         String capacityDescription = ChatColor.DARK_GRAY+""+durability;
 
         ItemMeta bucket_meta = bucket.getItemMeta();
@@ -56,17 +57,21 @@ public class Bucket{
 
     public ItemStack updateBucket(ItemStack oldBucket) {
         ItemMeta oldMeta = oldBucket.getItemMeta();
-        int current = Integer.parseInt(oldMeta.getLore().get(1).substring(2));
+        int current = Integer.parseInt(oldMeta.getLore().get(1).substring(2))-1;
 
-        if(current-1 == 0) {
-            return new ItemStack(Material.AIR,1);
-        } else {
-            current--;
-            String capacityDescription = ChatColor.DARK_GRAY+""+current;
-            oldMeta.setLore(Arrays.asList(description,capacityDescription));
-            oldBucket.setItemMeta(oldMeta);
-            return oldBucket;
+        if(current == 0) {
+            if(oldBucket.getAmount() == 1) {
+                return new ItemStack(Material.AIR, 1);
+            } else {
+                oldBucket.setAmount(oldBucket.getAmount()-1);
+                current = durability;
+            }
         }
+
+        String capacityDescription = ChatColor.DARK_GRAY+""+current;
+        oldMeta.setLore(Arrays.asList(description,capacityDescription));
+        oldBucket.setItemMeta(oldMeta);
+        return oldBucket;
     }
 
     public ItemStack getBucket() {
