@@ -12,6 +12,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.event.block.CauldronLevelChangeEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerBucketFillEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
@@ -102,6 +104,21 @@ public class BucketListener implements Listener {
         if (bucket.isCorrectBucket(e.getItem())) {
             Dispenser dispenser = (Dispenser) e.getBlock().getState();
             e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void inventoryUse(InventoryClickEvent e) {
+        if (e.getClickedInventory() != null) {
+            if (e.getClickedInventory().getType() == InventoryType.GRINDSTONE || e.getClickedInventory().getType() == InventoryType.ANVIL) {
+                if(e.getSlotType() == InventoryType.SlotType.CRAFTING && bucket.isCorrectBucket(e.getCursor())) {
+                    e.setCancelled(true);
+                }
+            } else if(e.getClickedInventory().getType() == InventoryType.PLAYER && e.isShiftClick()) {
+                if((e.getView().getTopInventory().getType() == InventoryType.GRINDSTONE || e.getView().getTopInventory().getType() == InventoryType.ANVIL) && bucket.isCorrectBucket(e.getCurrentItem())) {
+                    e.setCancelled(true);
+                }
+            }
         }
     }
 
