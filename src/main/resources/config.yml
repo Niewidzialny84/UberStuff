@@ -1,6 +1,5 @@
 bucket:
   enable: true
-  oof: true
 voidfall:
   enable: true
   #A name to which world you should be teleported after fallig to the void to
