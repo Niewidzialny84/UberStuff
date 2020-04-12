@@ -6,7 +6,6 @@ import github.niewidzialny84.uberstuff.util.commands.Commands;
 import github.niewidzialny84.uberstuff.util.commands.CommandsTab;
 import github.niewidzialny84.uberstuff.voidfall.PlayerFall;
 import org.bukkit.event.HandlerList;
-import org.bukkit.plugin.Plugin;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +41,6 @@ public class Config {
             playerFall = new PlayerFall(plugin);
             plugin.getLogger().info("VoidFall enabled");
         }
-
     }
 
     public static Map<String, Object> getConfigValue() {
