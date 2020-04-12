@@ -13,19 +13,25 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.Arrays;
 
-public class Bucket {
+public class Bucket{
 
     private ItemStack bucket = new ItemStack(Material.BUCKET,1);
-    private final String description = ChatColor.GRAY+"Mieści dużo płynów";
+    private String description;
+    private String name;
     private ShapedRecipe recipe;
     private NamespacedKey key;
 
 
     Bucket(Plugin plugin) {
+        name = ChatColor.YELLOW + plugin.getConfig().getString("bucket.name","Duże wiadro");
+        description = ChatColor.GRAY + plugin.getConfig().getString("bucket.description", "Pochłania płyny");
+        int durability = plugin.getConfig().getInt("bucket.durability",100);
+        String capacityDescription = ChatColor.DARK_GRAY+""+durability;
+
         ItemMeta bucket_meta = bucket.getItemMeta();
         bucket_meta.addEnchant(Enchantment.DIG_SPEED,1,false);
-        bucket_meta.setDisplayName(ChatColor.YELLOW +"Duże wiadro");
-        bucket_meta.setLore(Arrays.asList(description));
+        bucket_meta.setDisplayName(name);
+        bucket_meta.setLore(Arrays.asList(description,capacityDescription));
         bucket_meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         bucket.setItemMeta(bucket_meta);
 
@@ -42,11 +48,25 @@ public class Bucket {
 
     public boolean isCorrectBucket(ItemStack a) {
         try {
-            return a.getItemMeta().getLore().get(0) != null && a.getItemMeta().getLore().get(0).equals(bucket.getItemMeta().getLore().get(0));
+            return a.getItemMeta().getLore().get(0) != null && a.getItemMeta().getLore().get(0).equals(description) && a.getItemMeta().getDisplayName().equals(name);
         } catch (NullPointerException ex) {
             return false;
         }
+    }
 
+    public ItemStack updateBucket(ItemStack oldBucket) {
+        ItemMeta oldMeta = oldBucket.getItemMeta();
+        int current = Integer.parseInt(oldMeta.getLore().get(1).substring(2));
+
+        if(current-1 == 0) {
+            return new ItemStack(Material.AIR,1);
+        } else {
+            current--;
+            String capacityDescription = ChatColor.DARK_GRAY+""+current;
+            oldMeta.setLore(Arrays.asList(description,capacityDescription));
+            oldBucket.setItemMeta(oldMeta);
+            return oldBucket;
+        }
     }
 
     public ItemStack getBucket() {

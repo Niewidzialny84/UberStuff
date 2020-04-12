@@ -1,5 +1,8 @@
 bucket:
   enable: true
+  name: Duże wiadro
+  description: Pochłania płyny
+  durability: 100
 voidfall:
   enable: true
   #A name to which world you should be teleported after fallig to the void to

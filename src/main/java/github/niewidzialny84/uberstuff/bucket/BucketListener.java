@@ -35,8 +35,12 @@ public class BucketListener implements Listener {
     @EventHandler
     public void playerFillClick(PlayerBucketFillEvent e) {
         Block block = e.getBlock();
-
+        boolean mainHand = false;
         if (bucket.isCorrectBucket(e.getPlayer().getInventory().getItemInMainHand()) || bucket.isCorrectBucket(e.getPlayer().getInventory().getItemInOffHand())) {
+            if(bucket.isCorrectBucket(e.getPlayer().getInventory().getItemInMainHand())) {
+                mainHand = true;
+            }
+
             if(e.getItemStack().equals(new ItemStack(Material.MILK_BUCKET,1))) {
                 e.setCancelled(true);
                 e.getPlayer().updateInventory();
@@ -49,6 +53,7 @@ public class BucketListener implements Listener {
                     e.setCancelled(true);
                     ((Waterlogged)blockData).setWaterlogged(false);
                     block.setBlockData(blockData);
+                    replaceHand(e.getPlayer(),mainHand);
                     return;
                 }
             }
@@ -56,6 +61,7 @@ public class BucketListener implements Listener {
             if((block.getType().equals(Material.WATER) || block.getType().equals(Material.LAVA))) {
                 e.setCancelled(true);
                 block.setType(Material.AIR);
+                replaceHand(e.getPlayer(),mainHand);
                 if(e.getPlayer().isSneaking()) {
                     for(int x = -1; x<= 1;x++) {
                         for(int y = -1; y<=1; y++) {
@@ -96,6 +102,14 @@ public class BucketListener implements Listener {
         if (bucket.isCorrectBucket(e.getItem())) {
             Dispenser dispenser = (Dispenser) e.getBlock().getState();
             e.setCancelled(true);
+        }
+    }
+
+    private void replaceHand(Player player,boolean mainHand) {
+        if(mainHand) {
+            player.getInventory().setItemInMainHand(bucket.updateBucket(player.getInventory().getItemInMainHand()));
+        } else {
+            player.getInventory().setItemInOffHand(bucket.updateBucket(player.getInventory().getItemInOffHand()));
         }
     }
 }
