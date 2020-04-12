@@ -6,6 +6,7 @@ authors: [Niewidzialny84]
 description: for other memes stuff
 
 commands:
-  permision: uberstuff
-  usage: /uberstuff
-  permission-message: You are not allowed to use this command.
+  uberstuff:
+    permision: uberstuff
+    usage: /uberstuff
+    permission-message: You are not allowed to use this command.
