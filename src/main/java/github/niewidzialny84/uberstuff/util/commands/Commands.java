@@ -37,6 +37,6 @@ public class Commands implements CommandExecutor {
             }
         }
 
-        return false;
+        return true;
     }
 }

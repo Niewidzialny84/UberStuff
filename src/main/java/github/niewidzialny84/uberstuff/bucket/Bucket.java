@@ -36,6 +36,7 @@ public class Bucket {
         recipe.setIngredient('x',Material.ENDER_EYE);
         recipe.setGroup("UberStuffSpecial");
 
+        Bukkit.removeRecipe(key);
         Bukkit.addRecipe(recipe);
     }
 
