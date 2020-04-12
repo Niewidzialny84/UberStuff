@@ -1,11 +1,11 @@
 package github.niewidzialny84.uberstuff;
 
-import github.niewidzialny84.uberstuff.config.Config;
+import github.niewidzialny84.uberstuff.util.config.Config;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class UberStuff extends JavaPlugin {
 
-    private Config pluginConfig;
+    private static Config pluginConfig;
 
     @Override
     public void onEnable() {
@@ -17,5 +17,9 @@ public final class UberStuff extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+    }
+
+    public static Config getPluginConfig() {
+        return pluginConfig;
     }
 }

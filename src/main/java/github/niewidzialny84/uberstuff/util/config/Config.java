@@ -1,6 +1,9 @@
-package github.niewidzialny84.uberstuff.config;
+package github.niewidzialny84.uberstuff.util.config;
 
+import github.niewidzialny84.uberstuff.UberStuff;
 import github.niewidzialny84.uberstuff.bucket.BucketListener;
+import github.niewidzialny84.uberstuff.util.commands.Commands;
+import github.niewidzialny84.uberstuff.util.commands.CommandsTab;
 import github.niewidzialny84.uberstuff.voidfall.PlayerFall;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
@@ -9,13 +12,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Config {
-    private Plugin plugin;
+    private UberStuff plugin;
     private static Map<String,Object> configValue;
     private static PlayerFall playerFall;
     private static BucketListener bucketListener;
 
-    public Config(Plugin plugin) {
+    public Config(UberStuff plugin) {
         this.plugin = plugin;
+
+        plugin.getCommand("uberstuff").setExecutor(new Commands(plugin));
+        plugin.getCommand("uberstuff").setTabCompleter(new CommandsTab());
+
         configValue = new HashMap<>();
         reload();
     }
