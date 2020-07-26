@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.plugin.Plugin;
 
 
 public class PlayerFall implements Listener {
@@ -29,7 +28,7 @@ public class PlayerFall implements Listener {
 
                 if(player.isOnline() && player.getWorld().getEnvironment().equals(World.Environment.THE_END) && y < -50) {
 
-                    String worldName = plugin.getConfig().getString("voidfall.worldName","world");
+                    String worldName = plugin.getPluginConfig().getString("voidfall.worldName","world");
 
                     Location loc = player.getLocation();
                     loc.setWorld(Bukkit.getWorld(worldName));
@@ -38,7 +37,7 @@ public class PlayerFall implements Listener {
                     player.teleport(loc);
                     new SoundEffect(player).runTaskLater(plugin,10);
 
-                    if(plugin.getConfig().getBoolean("voidfall.doVoidout",false)) {
+                    if(plugin.getPluginConfig().getBoolean("voidfall.doVoidout",false)) {
                         new VoidOut(player).runTaskLater(plugin, 15);
                     }
                 }

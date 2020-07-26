@@ -10,7 +10,6 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 
 import java.util.Arrays;
 
@@ -25,9 +24,10 @@ public class Bucket{
 
 
     Bucket(UberStuff plugin) {
-        name = ChatColor.YELLOW + plugin.getConfig().getString("bucket.name","Duże wiadro");
-        description = ChatColor.GRAY + plugin.getConfig().getString("bucket.description", "Pochłania płyny");
-        durability = plugin.getConfig().getInt("bucket.durability",100);
+        name = ChatColor.YELLOW + plugin.getPluginConfig().getString("bucket.name","Duże wiadro");
+        description = ChatColor.GRAY + plugin.getPluginConfig().getString("bucket.description", "Pochłania płyny");
+        durability = plugin.getPluginConfig().getInt("bucket.durability",100);
+
         String capacityDescription = ChatColor.DARK_GRAY+""+durability;
 
         ItemMeta bucket_meta = bucket.getItemMeta();

@@ -7,7 +7,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
 public class Commands implements CommandExecutor {
     UberStuff plugin;
@@ -28,7 +27,7 @@ public class Commands implements CommandExecutor {
                     case 1:
                         if(args[0] != null ) {
                             if(args[0].equalsIgnoreCase("RELOAD")) {
-                                plugin.getPluginConfig().reload();
+                                plugin.reload();
                                 plugin.getLogger().info("Uberstuff reloaded");
                             }
                         }
