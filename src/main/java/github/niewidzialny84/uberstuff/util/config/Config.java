@@ -12,9 +12,9 @@ import java.util.Map;
 
 public class Config {
     private UberStuff plugin;
-    private static Map<String,Object> configValue;
-    private static PlayerFall playerFall;
-    private static BucketListener bucketListener;
+    private ConfigMap<String,Object> configMap;
+    private PlayerFall playerFall;
+    private BucketListener bucketListener;
 
     public Config(UberStuff plugin) {
         this.plugin = plugin;
@@ -22,27 +22,27 @@ public class Config {
         plugin.getCommand("uberstuff").setExecutor(new Commands(plugin));
         plugin.getCommand("uberstuff").setTabCompleter(new CommandsTab());
 
-        configValue = new HashMap<>();
+        configMap = new ConfigMap<>();
         reload();
     }
 
     public void reload() {
         plugin.reloadConfig();
-        configValue = plugin.getConfig().getValues(true);
+        configMap = (ConfigMap<String,Object>)plugin.getConfig().getValues(true);
 
         HandlerList.unregisterAll(plugin);
-        if((Boolean) configValue.get("bucket.enable")) {
+        if(configMap.getBoolean("bucket.enable",false)) {
             bucketListener = new BucketListener(plugin);
             plugin.getLogger().info("Custom bucket enabled");
         }
 
-        if((Boolean) configValue.get("voidfall.enable")) {
+        if(configMap.getBoolean("voidfall.enable",false)) {
             playerFall = new PlayerFall(plugin);
             plugin.getLogger().info("VoidFall enabled");
         }
     }
 
-    public static Map<String, Object> getConfigValue() {
-        return configValue;
+    public ConfigMap<String, Object> getConfigValue() {
+        return configMap;
     }
 }
