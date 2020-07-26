@@ -10,3 +10,7 @@ commands:
     permision: uberstuff
     usage: /uberstuff
     permission-message: You are not allowed to use this command.
+  sit:
+    permission: uberstuff-sit
+    usage: /sit
+    permission-message: You are not allowed to use this command.

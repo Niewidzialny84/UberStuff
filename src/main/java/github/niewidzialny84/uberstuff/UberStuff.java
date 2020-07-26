@@ -1,6 +1,10 @@
 package github.niewidzialny84.uberstuff;
 
 import github.niewidzialny84.uberstuff.bucket.BucketListener;
+import github.niewidzialny84.uberstuff.sit.SitCommand;
+import github.niewidzialny84.uberstuff.sit.SitCommandTab;
+import github.niewidzialny84.uberstuff.util.commands.Commands;
+import github.niewidzialny84.uberstuff.util.commands.CommandsTab;
 import github.niewidzialny84.uberstuff.util.config.Config;
 import github.niewidzialny84.uberstuff.util.config.ConfigMap;
 import github.niewidzialny84.uberstuff.voidfall.PlayerFall;
@@ -18,6 +22,8 @@ public final class UberStuff extends JavaPlugin {
         saveDefaultConfig();
         pluginConfig = new Config(this);
         reload();
+        this.getCommand("sit").setExecutor(new SitCommand(this));
+        this.getCommand("sit").setTabCompleter(new SitCommandTab());
     }
 
     @Override
