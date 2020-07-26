@@ -31,7 +31,6 @@ public class Config {
         configValue = plugin.getConfig().getValues(true);
 
         HandlerList.unregisterAll(plugin);
-
         if((Boolean) configValue.get("bucket.enable")) {
             bucketListener = new BucketListener(plugin);
             plugin.getLogger().info("Custom bucket enabled");

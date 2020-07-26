@@ -10,9 +10,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public class Commands implements CommandExecutor {
-    Plugin plugin;
+    UberStuff plugin;
 
-    public Commands(Plugin plugin) {
+    public Commands(UberStuff plugin) {
         this.plugin = plugin;
     }
 
@@ -28,7 +28,7 @@ public class Commands implements CommandExecutor {
                     case 1:
                         if(args[0] != null ) {
                             if(args[0].equalsIgnoreCase("RELOAD")) {
-                                UberStuff.getPluginConfig().reload();
+                                plugin.getPluginConfig().reload();
                             }
                         }
                 }

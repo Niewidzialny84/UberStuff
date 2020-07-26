@@ -1,5 +1,6 @@
 package github.niewidzialny84.uberstuff.bucket;
 
+import github.niewidzialny84.uberstuff.UberStuff;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -23,7 +24,7 @@ public class BucketListener implements Listener {
 
     private Bucket bucket;
 
-    public BucketListener(Plugin plugin) {
+    public BucketListener(UberStuff plugin) {
         Bukkit.getPluginManager().registerEvents(this, plugin);
         bucket = new Bucket(plugin);
     }

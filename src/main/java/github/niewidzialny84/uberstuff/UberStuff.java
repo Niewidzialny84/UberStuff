@@ -4,8 +4,7 @@ import github.niewidzialny84.uberstuff.util.config.Config;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class UberStuff extends JavaPlugin {
-
-    private static Config pluginConfig;
+    private Config pluginConfig = null;
 
     @Override
     public void onEnable() {
@@ -19,7 +18,7 @@ public final class UberStuff extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    public static Config getPluginConfig() {
+    public Config getPluginConfig() {
         return pluginConfig;
     }
 }

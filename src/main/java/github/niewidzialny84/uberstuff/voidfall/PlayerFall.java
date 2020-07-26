@@ -1,5 +1,6 @@
 package github.niewidzialny84.uberstuff.voidfall;
 
+import github.niewidzialny84.uberstuff.UberStuff;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -11,9 +12,9 @@ import org.bukkit.plugin.Plugin;
 
 
 public class PlayerFall implements Listener {
-    private Plugin plugin;
+    private UberStuff plugin;
 
-    public PlayerFall(Plugin plugin) {
+    public PlayerFall(UberStuff plugin) {
         Bukkit.getPluginManager().registerEvents(this,plugin);
         this.plugin = plugin;
     }

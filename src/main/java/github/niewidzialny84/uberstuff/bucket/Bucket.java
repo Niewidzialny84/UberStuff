@@ -1,5 +1,6 @@
 package github.niewidzialny84.uberstuff.bucket;
 
+import github.niewidzialny84.uberstuff.UberStuff;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -23,7 +24,7 @@ public class Bucket{
     private NamespacedKey key;
 
 
-    Bucket(Plugin plugin) {
+    Bucket(UberStuff plugin) {
         name = ChatColor.YELLOW + plugin.getConfig().getString("bucket.name","Duże wiadro");
         description = ChatColor.GRAY + plugin.getConfig().getString("bucket.description", "Pochłania płyny");
         durability = plugin.getConfig().getInt("bucket.durability",100);
