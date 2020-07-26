@@ -29,6 +29,7 @@ public class Commands implements CommandExecutor {
                         if(args[0] != null ) {
                             if(args[0].equalsIgnoreCase("RELOAD")) {
                                 plugin.getPluginConfig().reload();
+                                plugin.getLogger().info("Uberstuff reloaded");
                             }
                         }
                 }

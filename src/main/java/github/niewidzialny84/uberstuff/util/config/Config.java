@@ -28,9 +28,15 @@ public class Config {
 
     public void reload() {
         plugin.reloadConfig();
-        configMap = (ConfigMap<String,Object>)plugin.getConfig().getValues(true);
+
+        Map<String,Object> map = plugin.getConfig().getValues(true);
+
+        for(Map.Entry<String, Object> entry: map.entrySet()) {
+            configMap.put(entry.getKey(),entry.getValue());
+        }
 
         HandlerList.unregisterAll(plugin);
+
         if(configMap.getBoolean("bucket.enable",false)) {
             bucketListener = new BucketListener(plugin);
             plugin.getLogger().info("Custom bucket enabled");
