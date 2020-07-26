@@ -1,22 +1,19 @@
 package github.niewidzialny84.uberstuff.sit;
 
 import github.niewidzialny84.uberstuff.UberStuff;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
+import github.niewidzialny84.uberstuff.sit.commands.Commands;
+import github.niewidzialny84.uberstuff.sit.commands.CommandsTab;
 
 public class Sit {
     private UberStuff plugin;
+    public static Collection armors;
 
     public Sit(UberStuff plugin) {
         this.plugin = plugin;
+
+        armors = new Collection();
+        new Listeners(plugin);
+        plugin.getCommand("sit").setExecutor(new Commands(plugin));
+        plugin.getCommand("sit").setTabCompleter(new CommandsTab());
     }
-
-    public void createArmorStand(Player player) {
-        Entity armor = player.getWorld().spawnEntity(player.getLocation().add(0,-1,0), EntityType.ARMOR_STAND);
-        armor.addPassenger(player);
-    }
-
-
-
 }

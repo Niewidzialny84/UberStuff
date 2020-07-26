@@ -1,4 +1,4 @@
-package github.niewidzialny84.uberstuff.sit;
+package github.niewidzialny84.uberstuff.sit.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -7,7 +7,7 @@ import org.bukkit.command.TabCompleter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SitCommandTab implements TabCompleter {
+public class CommandsTab implements TabCompleter {
     private final static List<String> EMPTY = new ArrayList<>();
 
     @Override
