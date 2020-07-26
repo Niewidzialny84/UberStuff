@@ -24,7 +24,7 @@ public final class UberStuff extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        sit.clearArmors();
     }
 
     public void reload() {
