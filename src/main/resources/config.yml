@@ -9,3 +9,7 @@ voidfall:
   worldName: world
   #If Voidout set to true it will delete whole chunk after the teleportation
   doVoidout: false
+sit:
+  enable: true
+  enter: You are now sitting
+  leave: You are now standing

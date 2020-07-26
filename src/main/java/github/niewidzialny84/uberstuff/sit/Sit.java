@@ -11,7 +11,7 @@ public class Sit {
     public Sit(UberStuff plugin) {
         this.plugin = plugin;
 
-        armors = new Collection();
+        armors = new Collection(plugin);
         new Listeners(plugin);
         plugin.getCommand("sit").setExecutor(new Commands(plugin));
         plugin.getCommand("sit").setTabCompleter(new CommandsTab());

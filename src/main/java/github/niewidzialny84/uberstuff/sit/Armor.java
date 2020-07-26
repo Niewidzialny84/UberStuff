@@ -12,7 +12,7 @@ public class Armor {
     private Location location;
 
     public Armor(Player player) {
-        this.armor = (ArmorStand)player.getWorld().spawnEntity(player.getLocation().add(0,-1.7,0), EntityType.ARMOR_STAND);
+        this.armor = (ArmorStand)player.getWorld().spawnEntity(player.getLocation().add(0,-1.72,0), EntityType.ARMOR_STAND);
         this.location = armor.getLocation();
 
         armor.setVisible(false);

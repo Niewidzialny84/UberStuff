@@ -13,13 +13,13 @@ public final class UberStuff extends JavaPlugin {
 
     private PlayerFall playerFall;
     private BucketListener bucketListener;
+    private Sit sit;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
         pluginConfig = new Config(this);
         reload();
-        new Sit(this);
     }
 
     @Override
@@ -40,6 +40,11 @@ public final class UberStuff extends JavaPlugin {
         if(pluginConfig.getConfigMap().getBoolean("voidfall.enable",false)) {
             playerFall = new PlayerFall(this);
             this.getLogger().info("VoidFall enabled");
+        }
+
+        if(pluginConfig.getConfigMap().getBoolean("sit.enable",false)) {
+            sit = new Sit(this);
+            this.getLogger().info("Sit enabled");
         }
     }
 
