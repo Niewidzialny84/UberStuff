@@ -28,7 +28,7 @@ public class Bucket{
         description = ChatColor.GRAY + plugin.getPluginConfig().getString("bucket.description", "Pochłania płyny");
         durability = plugin.getPluginConfig().getInt("bucket.durability",100);
 
-        String capacityDescription = ChatColor.DARK_GRAY+""+durability;
+        String capacityDescription = ChatColor.GRAY+""+durability;
 
         ItemMeta bucket_meta = bucket.getItemMeta();
         bucket_meta.addEnchant(Enchantment.DIG_SPEED,1,false);
