@@ -2,8 +2,8 @@ package github.niewidzialny84.uberstuff.sit;
 
 import github.niewidzialny84.uberstuff.UberStuff;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
-import org.bukkit.util.EulerAngle;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,21 +29,30 @@ public class Collection {
         player.sendMessage(ChatColor.GRAY+plugin.getPluginConfig().getString("sit.leave","You are now standing"));
     }
 
+    public Armor getArmor(Player player) {
+        return armorMap.get(player.getUniqueId());
+    }
+
+    public Map<UUID,Armor> getArmorMap() {
+        return  armorMap;
+    }
+
     public void clear() {
         for(Map.Entry<UUID,Armor> entry : armorMap.entrySet()) {
             entry.getValue().remove();
         }
     }
 
-    public boolean isSitting(Player player) {
-        return armorMap.containsKey(player.getUniqueId());
+    public boolean isArmor(ArmorStand armorStand) {
+        for(Map.Entry<UUID,Armor> entry : armorMap.entrySet()) {
+            if(entry.getValue().getArmor().equals(armorStand)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void rotate(Player player) {
-        double x = 0, y = 0, z = 0;
-        y = Math.toRadians(player.getLocation().getYaw());
-
-        EulerAngle angle = new EulerAngle(x,y,z);
-        armorMap.get(player.getDisplayName()).rotate(angle);
+    public boolean isSitting(Player player) {
+        return armorMap.containsKey(player.getUniqueId());
     }
 }

@@ -26,7 +26,7 @@ public class PlayerFall implements Listener {
 
                 int y = player.getLocation().getBlockY();
 
-                if(player.isOnline() && player.getWorld().getEnvironment().equals(World.Environment.THE_END) && y < -50) {
+                if(player.isOnline() && (player.getWorld().getEnvironment().equals(World.Environment.THE_END) || player.getWorld().getEnvironment().equals(World.Environment.NETHER))  && y < -50) {
 
                     String worldName = plugin.getPluginConfig().getString("voidfall.worldName","world");
 
