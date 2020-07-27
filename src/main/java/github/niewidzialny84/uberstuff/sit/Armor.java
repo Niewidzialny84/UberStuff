@@ -1,13 +1,10 @@
 package github.niewidzialny84.uberstuff.sit;
 
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.EntityEquipment;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.EulerAngle;
 import org.bukkit.util.Vector;
 
@@ -16,7 +13,7 @@ public class Armor {
     private Location location;
 
     public Armor(Player player) {
-        this.armor = (ArmorStand)player.getWorld().spawnEntity(player.getLocation().add(0,-1.72,0), EntityType.ARMOR_STAND);
+        this.armor = (ArmorStand)player.getWorld().spawnEntity(player.getLocation().add(0,-1.705,0), EntityType.ARMOR_STAND);
         this.location = armor.getLocation();
 
         armor.setVisible(false);
